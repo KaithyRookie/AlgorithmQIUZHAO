@@ -27,6 +27,10 @@
  */
 public class ClimbStairs {
 
+    /**
+     * 时间复杂度为O(n)
+     * 空间复杂度为O(n)
+     */
     public int climbStairs(int n) {
         if(1 == n) {
             return 1;
@@ -40,6 +44,32 @@ public class ClimbStairs {
         }
 
         return memo[n-1];
+    }
+
+    /**
+     * 动态规划优化
+     * 由于对于第i阶台阶的楼梯而言，是由其第i-1和第i-2层台阶的走法确定，所以只需要两个变量保存前两次
+     * 台阶的结果即可
+     * 
+     * 时间复杂度不变,依旧为O(n)
+     * 空间复杂度降为O(1)
+     * @param n
+     * @return
+     */
+    public int climbStairs2(int n) {
+        if(1 == n) {
+            return 1;
+        }
+        int first = 1;
+        int second = 2;
+        int third =3;
+        for (int i = 3; i <= n; i++) {
+            third = first+second;
+            first = second;
+            second = third;
+        }
+
+        return third;
     }
 
     public static void main(String[] args) {
