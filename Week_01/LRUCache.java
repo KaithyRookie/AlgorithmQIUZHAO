@@ -1,5 +1,3 @@
-package com.kaithy.xu.tecent.mediumQuestion;
-
 import java.util.HashMap;
 import java.util.Map;
 

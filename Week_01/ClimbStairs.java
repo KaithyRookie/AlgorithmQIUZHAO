@@ -1,5 +1,3 @@
-package com.kaithy.xu.tecent.mediumQuestion;
-
 /**
  * 70. 爬楼梯
  *
