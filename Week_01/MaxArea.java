@@ -33,6 +33,35 @@ public class MaxArea {
         return area;
     }
 
+    /*
+    左右指针向中间夹逼思路优化，在移动左指针或右指针时，
+    使用while循环一直移动到比当前指针所在高度更大的位置，以减少面积的计算
+
+    */
+    public int maxAreaOptim(int[] height) {
+        int area = 0;
+        int left = 0, right = height.length-1;
+        while(left < right) {
+            area = Math.max(area,(right-left) * Math.min(height[left], height[right]));
+
+            if(height[left] > height[right]) {
+                //右指针高度更小，移动右指针
+                int tmp = right;
+                while(left < right && height[right] < height[tmp]) {
+                    right--;
+                }
+            }else {
+
+                int tmp = left;
+                while(left < right && height[left] < height[tmp]) {
+                    left++;
+                }
+            }
+        }
+
+        return area;
+    }
+
     public static void main(String[] args) {
         int[] height = {1,8};
 
