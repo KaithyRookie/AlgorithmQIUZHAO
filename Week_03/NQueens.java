@@ -5,7 +5,7 @@ import java.util.List;
  * 51. N皇后
  *
  * n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
- *
+ * 
  * @author kaithy.xu
  * @date 2020-07-29 20:38
  */
@@ -38,6 +38,7 @@ public class NQueens {
 
         for (int column = 0; column < n; column++) {
             if(isOk(column,record,row,n)) {
+                //当通过校验后，就记录下当前皇后的放置位置，继续向下递归遍历
                 record[row] = column;
                 calNQueue(row+1, n, record, result);
             }
