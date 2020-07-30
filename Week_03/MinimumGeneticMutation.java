@@ -89,6 +89,37 @@ public class MinimumGeneticMutation {
         return  -1;
     }
 
+    /**
+     * 深度优先搜索，每次递归，找到与当前start字符相差一个的字符串，并且没有访问过的字符串，然后在visited中记录下该字符串，将该字符串作为start 进行下一轮的递归，
+     */
+    private int count = Integer.MAX_VALUE;
+    private int dfs(int step, String start, String end, Set<String> visited, String[] bank) {
+        if(start.equals(end)) {
+            count = Math.min(step, count);
+            return count;
+        }
+        
+        for (String b : bank) {
+
+            int diff = 0;
+            for (int i = 0; i < b.length(); i++) {
+                if(start.charAt(i) != b.charAt(i)){
+                    diff++;
+                }
+                if(diff > 1) {
+                    break;
+                }
+            }
+            if(diff == 1 && !visited.contains(b)) {
+                visited.add(b);
+                dfs(step+1, b, end, visited, bank);
+                visited.remove(b);
+            }
+        }
+
+        return count;
+    }
+
     public static void main(String[] args) {
         String start = "AACCGGTT";
         String end = "AAACGGTA";
