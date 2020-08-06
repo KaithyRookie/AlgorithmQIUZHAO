@@ -17,6 +17,9 @@ public class LongestCommonSubsequence {
         int t1Length = text1.length();
         int t2Length = text2.length();
         if(t1Length <= 1 || t2Length <= 1) {
+            if(t1Length == 1 && t2Length == 1) {
+                return text1.charAt(0) == text2.charAt(0) ? 1 : 0;
+            }
             return Math.min(t1Length, t2Length);
         }
         int[][] memo = new int[t1Length][t2Length];
