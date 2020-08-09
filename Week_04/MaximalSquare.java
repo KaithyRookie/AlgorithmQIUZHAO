@@ -50,12 +50,8 @@ public class MaximalSquare {
             for (int j = 1; j < col; j++) {
                 
                 if(matrix[i][j] == '1') {
-                    if(dp[i-1][j-1] == 0 || dp[i-1][j] ==0 || dp[i][j-1] == 0) {
-                        dp[i][j] = 1;
-                    }else {
-                        int min = Math.min(Math.min(dp[i-1][j-1], dp[i-1][j]), dp[i][j-1]);
-                        dp[i][j] = min + 1;
-                    }
+                    int min = Math.min(Math.min(dp[i-1][j-1], dp[i-1][j]), dp[i][j-1]);
+                    dp[i][j] = min + 1;
                     result = Math.max(result,dp[i][j]);
                 }else {
                     dp[i][j] = 0;
@@ -63,7 +59,7 @@ public class MaximalSquare {
             }
         }
         
-        return (int) Math.pow(result,2);
+        return result * result;
     }
 
     public static void main(String[] args) {
