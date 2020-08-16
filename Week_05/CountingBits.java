@@ -14,6 +14,7 @@ public class CountingBits {
     /**
      * 利用位运算+DP方式，从 cur = 1 开始，每一次循环，都将 cur 有移一位得到 next，在 cur 与 next 之间的数字的 1 的个数满足 DP 公式：
      * DP[i] = DP[cur] + DP[i-cur]
+     * 时间复杂度：O(num)，虽然使用了两层循环，但实际每个数字只会遍历一次，而数组的随机获取的时间复杂度是O(1)
      * @param num
      * @return
      */
