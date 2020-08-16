@@ -39,6 +39,22 @@ public class CountingBits {
         return result;
     }
 
+    /**
+     * 实现逻辑相同，但是代码实现更美观
+     * 通过 i & (i-1) 找到 比 i 小 但是高位1的个数相同的数字
+     * @param num
+     * @return
+     */
+    public int[] solution2(int num) {
+        int[] result = new int[num+1];
+
+        for (int i = 1; i <= num ; i++) {
+            result[i] = result[i & (i-1)] + 1;
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         int num = 16;
         int[] result = new CountingBits().countBits(num);
